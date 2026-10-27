@@ -1,0 +1,161 @@
+- generic [ref=e3]:
+  - banner [ref=e12]:
+    - navigation "Principal" [ref=e13]:
+      - link "Fernanda Oliveira Editora de vídeo" [ref=e14] [cursor=pointer]:
+        - /url: "#top"
+        - text: Fernanda Oliveira
+        - generic [ref=e15]: Editora de vídeo
+      - list [ref=e16]:
+        - listitem [ref=e17]:
+          - link "Trabalhos" [ref=e18] [cursor=pointer]:
+            - /url: "#trabalhos"
+        - listitem [ref=e19]:
+          - link "Serviços" [ref=e20] [cursor=pointer]:
+            - /url: "#servicos"
+        - listitem [ref=e21]:
+          - link "Sobre" [ref=e22] [cursor=pointer]:
+            - /url: "#sobre"
+        - listitem [ref=e23]:
+          - link "Pacotes" [ref=e24] [cursor=pointer]:
+            - /url: "#pacotes"
+      - link "Falar no WhatsApp" [ref=e25] [cursor=pointer]:
+        - /url: https://wa.me/5598981431511?text=Ol%C3%A1%2C%20Fernanda!%20Vi%20o%20seu%20portf%C3%B3lio%20e%20quero%20um%20or%C3%A7amento%20para%20Reels.
+  - main [ref=e26]:
+    - generic [ref=e32]:
+      - heading "Reels que dão identidade e atraem clientes" [level=1] [ref=e33]:
+        - generic [ref=e34]: Reels
+        - generic [ref=e36]: que
+        - generic [ref=e38]: dão
+        - generic [ref=e40]: identidade
+        - generic [ref=e42]: e
+        - generic [ref=e44]: atraem
+        - generic [ref=e46]: clientes
+      - generic [ref=e48]:
+        - paragraph [ref=e49]: Edição de vídeo, captação mobile e storymaker para negócios que querem ser vistos e lembrados.
+        - generic [ref=e50]:
+          - link "Falar no WhatsApp" [ref=e52] [cursor=pointer]:
+            - /url: https://wa.me/5598981431511?text=Ol%C3%A1%2C%20Fernanda!%20Vi%20o%20seu%20portf%C3%B3lio%20e%20quero%20um%20or%C3%A7amento%20para%20Reels.
+          - button "Ver trabalhos" [ref=e55] [cursor=pointer]
+    - region "Clientes atendidos" [ref=e58]:
+      - paragraph [ref=e59]: Já criei Reels para
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]: Emporio Saladeria
+          - generic [ref=e67]: Villa Reale
+          - generic [ref=e71]: Dra. Sara Alves
+          - generic [ref=e75]: Squadron
+          - generic [ref=e79]: Sady Boutique
+          - generic [ref=e83]: Casa Faria
+        - generic [aria-hidden] [ref=e87]:
+          - generic [ref=e88]: Emporio Saladeria
+          - generic [ref=e92]: Villa Reale
+          - generic [ref=e96]: Dra. Sara Alves
+          - generic [ref=e100]: Squadron
+          - generic [ref=e104]: Sady Boutique
+          - generic [ref=e108]: Casa Faria
+    - generic [ref=e112]:
+      - heading "Reels que seguram o olhar" [level=2] [ref=e113]
+      - generic [ref=e114]:
+        - generic [ref=e115]:
+          - tablist "Reels em destaque" [ref=e116]:
+            - tab "5 equipamentos para açougue Casa Faria, Captação e edição, 34 s" [selected] [ref=e117] [cursor=pointer]:
+              - generic [ref=e118]:
+                - generic [ref=e119]: 5 equipamentos para açougue
+                - generic [ref=e120]: Casa Faria, Captação e edição, 34 s
+            - tab "Decoração Reel de evento, Edição, 40 s" [ref=e125] [cursor=pointer]:
+              - generic [ref=e126]:
+                - generic [ref=e127]: Decoração
+                - generic [ref=e128]: Reel de evento, Edição, 40 s
+            - tab "Prato Reel de gastronomia, Captação e edição" [ref=e132] [cursor=pointer]:
+              - generic [ref=e133]:
+                - generic [ref=e134]: Prato
+                - generic [ref=e135]: Reel de gastronomia, Captação e edição
+          - button "Assistir com som" [ref=e139] [cursor=pointer]
+        - button "Abrir 5 equipamentos para açougue em tela cheia com som" [ref=e144] [cursor=pointer]
+    - generic [ref=e147]:
+      - heading "O que eu faço" [level=2] [ref=e149]
+      - generic [ref=e152]:
+        - heading "Edição de vídeo" [level=3] [ref=e155]
+        - paragraph [ref=e156]: Cortes, ritmo, legendas e trilha pensados para o Reels segurar a atenção até o último segundo.
+      - generic [ref=e161]:
+        - heading "Captação mobile" [level=3] [ref=e164]
+        - paragraph [ref=e165]: Gravação com o celular e direção de filmagem. Imagem limpa e natural, sem precisar de estúdio.
+    - generic [ref=e168]:
+      - heading "Sobre mim" [level=2] [ref=e169]
+      - generic [ref=e170]:
+        - img "Retrato de Fernanda Oliveira, editora de vídeo, em fundo escuro" [ref=e173]
+        - paragraph [ref=e174]:
+          - generic [ref=e175]: Sou
+          - generic [ref=e176]: Fernanda,
+          - generic [ref=e177]: editora
+          - generic [ref=e178]: de
+          - generic [ref=e179]: vídeo
+          - generic [ref=e180]: e
+          - generic [ref=e181]: graduanda
+          - generic [ref=e182]: em
+          - generic [ref=e183]: Design,
+          - generic [ref=e184]: com
+          - generic [ref=e185]: "2"
+          - generic [ref=e186]: anos
+          - generic [ref=e187]: de
+          - generic [ref=e188]: experiência
+          - generic [ref=e189]: criando
+          - generic [ref=e190]: Reels
+          - generic [ref=e191]: para
+          - generic [ref=e192]: negócios
+          - generic [ref=e193]: que
+          - generic [ref=e194]: querem
+          - generic [ref=e195]: se
+          - generic [ref=e196]: destacar.
+          - generic [ref=e197]: Do
+          - generic [ref=e198]: briefing
+          - generic [ref=e199]: à
+          - generic [ref=e200]: edição
+          - generic [ref=e201]: final,
+          - generic [ref=e202]: cuido
+          - generic [ref=e203]: de
+          - generic [ref=e204]: cada
+          - generic [ref=e205]: detalhe
+          - generic [ref=e206]: para
+          - generic [ref=e207]: o
+          - generic [ref=e208]: seu
+          - generic [ref=e209]: conteúdo
+          - generic [ref=e210]: ter
+          - generic [ref=e211]: identidade
+          - generic [ref=e212]: e
+          - generic [ref=e213]: resultado.
+    - generic [ref=e214]:
+      - heading "Escolha o pacote ideal para o seu conteúdo" [level=2] [ref=e215]
+      - generic [ref=e216]:
+        - tablist "Pacotes" [ref=e217]:
+          - tab "1 Reels" [selected] [ref=e218] [cursor=pointer]
+          - tab "2 Reels" [ref=e220] [cursor=pointer]
+          - tab "3 Reels" [ref=e221] [cursor=pointer]
+        - tabpanel "1 Reels" [ref=e223]:
+          - generic [ref=e224]:
+            - paragraph [ref=e225]: Investimento
+            - paragraph [ref=e226]: R$ 150,00
+            - list [ref=e227]:
+              - listitem [ref=e228]: Reunião online
+              - listitem [ref=e231]: Briefing personalizado
+              - listitem [ref=e234]: 1 hora de gravação
+              - listitem [ref=e237]: Direção de filmagem
+              - listitem [ref=e240]: Edição profissional
+              - listitem [ref=e243]: Entrega em 2 dias úteis
+            - link "Falar no WhatsApp" [ref=e246] [cursor=pointer]:
+              - /url: https://wa.me/5598981431511?text=Ol%C3%A1%2C%20Fernanda!%20Quero%20o%20pacote%20de%201%20Reels%20(R%24%20150%2C00).%20Podemos%20conversar%3F
+    - generic [ref=e249]:
+      - generic [ref=e250]:
+        - generic [ref=e251]:
+          - heading "Vamos criar o seu próximo Reels?" [level=2] [ref=e252]:
+            - generic [ref=e253]: Vamos criar o seu
+            - generic [ref=e255]: próximo Reels?
+          - paragraph [ref=e257]: Me chame no WhatsApp para conversar sobre o seu projeto e receber um orçamento sem compromisso.
+          - link "Falar no WhatsApp" [ref=e260] [cursor=pointer]:
+            - /url: https://wa.me/5598981431511?text=Ol%C3%A1%2C%20Fernanda!%20Vi%20o%20seu%20portf%C3%B3lio%20e%20quero%20um%20or%C3%A7amento%20para%20Reels.
+        - img "Fernanda Oliveira sorrindo, de blusa branca" [ref=e264]
+      - generic [ref=e266]:
+        - paragraph [ref=e267]: Fernanda Oliveira Editora de vídeo
+        - link "+55 98 98143-1511" [ref=e268] [cursor=pointer]:
+          - /url: https://wa.me/5598981431511?text=Ol%C3%A1%2C%20Fernanda!%20Vi%20o%20seu%20portf%C3%B3lio%20e%20quero%20um%20or%C3%A7amento%20para%20Reels.
+        - paragraph [ref=e269]: © 2026 Fernanda Oliveira

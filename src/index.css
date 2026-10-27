@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/geist";
+
+/*
+ * DESIGN TOKENS
+ * Base: marrom da referência (#45291a) levado para um tom escuro de palco.
+ * Uma única cor de destaque (terracota viva, saturação < 80%).
+ * Raios: botões em pílula, mídia e painéis em 20px. Sem outros raios na página.
+ * Camadas (z): grain 30, nav 40, dialog 90, preloader 100.
+ */
+@theme {
+  --color-bg: #1c110b;
+  --color-surface: #2a1a11;
+  --color-brand: #45291a;
+  --color-brand-soft: #5a3825;
+  --color-line: rgb(243 235 227 / 0.14);
+  --color-text: #f3ebe3;
+  --color-muted: #b9a89b;
+  --color-accent: #e8743b;
+  --color-accent-ink: #1c110b;
+
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-media: 20px;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  color-scheme: dark;
+  background: var(--color-bg);
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+  scrollbar-color: var(--color-brand-soft) var(--color-bg);
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent);
+  border-radius: 999px;
+}
+
+button, a, [role="tab"] { cursor: pointer; touch-action: manipulation; }
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Grão fixo e sem pointer-events: único lugar onde ruído é permitido. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }

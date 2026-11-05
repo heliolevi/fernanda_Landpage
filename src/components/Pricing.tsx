@@ -1,141 +1,71 @@
-import { useEffect, useRef } from "react";
-import { animate } from "animejs";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useState } from "react";
-import { Check, WhatsappLogo } from "@phosphor-icons/react";
+import { motion, useReducedMotion } from "motion/react";
+import { Check, Sparkle, WhatsappLogo } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CTA_LABEL, packages, whatsappLink } from "@/lib/site";
-
-const brl = (n: number) => `R$ ${n.toFixed(2).replace(".", ",")}`;
+import { packages, quoteMessage, whatsappLink } from "@/lib/site";
 
 /**
- * Seletor de pacotes (shadcn Tabs + Motion + Anime.js):
- * trocar de pacote reanima o preço com contagem (Anime.js) e a lista com Motion, e a mensagem do WhatsApp já vai com o pacote.
+ * Planos de orçamento: cada card abre o WhatsApp com a mensagem do plano já pronta.
  */
 export function Pricing() {
-  const [value, setValue] = useState<string>(packages[0].id);
-  const pkg = packages.find((p) => p.id === value) ?? packages[0];
+  const reduce = useReducedMotion();
 
   return (
     <section id="pacotes" className="relative mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
-      <h2 className="max-w-[16ch] text-[clamp(2.6rem,7vw,6rem)] leading-[0.98]">Escolha o pacote ideal para o seu conteúdo</h2>
+      <p className="text-base text-muted">Orçamento sem compromisso</p>
+      <h2 className="mt-2 max-w-[18ch] text-[clamp(2.6rem,7vw,6rem)] leading-[0.98]">Escolha um plano e peça seu orçamento</h2>
+      <p className="mt-6 max-w-xl text-lg text-muted">
+        Clique no plano que mais combina com o seu momento. Eu recebo a mensagem pronta no WhatsApp e te respondo com uma proposta sob medida.
+      </p>
 
-      <Tabs value={value} onValueChange={setValue} className="mt-14 grid gap-8 md:mt-20 lg:grid-cols-12 lg:gap-8">
-        <TabsList aria-label="Pacotes" className="flex-row gap-3 lg:col-span-4 lg:flex-col lg:gap-4">
-          {packages.map((p) => {
-            const active = p.id === value;
-            return (
-              <TabsTrigger
-                key={p.id}
-                value={p.id}
-                className={`flex-1 rounded-full border px-5 py-4 text-center transition-colors duration-300 lg:flex-none lg:px-8 lg:py-6 lg:text-left ${
-                  active ? "border-transparent text-accent-ink" : "border-line text-muted hover:border-text/50 hover:text-text"
-                }`}
-              >
-                {active && (
-                  <motion.span
-                    layoutId="pkg-pill"
-                    className="absolute inset-0 rounded-full bg-accent"
-                    transition={{ type: "spring", stiffness: 260, damping: 28 }}
-                  />
-                )}
-                <span className="relative font-display text-xl font-semibold tracking-tight lg:text-3xl">{p.label}</span>
-              </TabsTrigger>
-            );
-          })}
-        </TabsList>
-
-        <div className="lg:col-span-8">
-          {packages.map((p) => (
-            <TabsContent key={p.id} value={p.id} forceMount hidden={p.id !== value}>
-              {p.id === value && <Panel pkg={pkg} />}
-            </TabsContent>
-          ))}
-        </div>
-      </Tabs>
-    </section>
-  );
-}
-
-function Panel({ pkg }: { pkg: (typeof packages)[number] }) {
-  const reduce = useReducedMotion();
-  const priceEl = useRef<HTMLSpanElement>(null);
-  const last = useRef(0);
-
-  useEffect(() => {
-    const el = priceEl.current;
-    if (!el) return;
-    if (reduce) {
-      el.textContent = brl(pkg.price);
-      last.current = pkg.price;
-      return;
-    }
-    const obj = { v: last.current };
-    const a = animate(obj, {
-      v: pkg.price,
-      duration: 900,
-      ease: "outExpo",
-      onUpdate: () => {
-        el.textContent = brl(obj.v);
-      },
-      onComplete: () => {
-        last.current = pkg.price;
-      },
-    });
-    return () => {
-      a.pause();
-      last.current = obj.v;
-    };
-  }, [pkg.price, reduce]);
-
-  const message = `Olá, Fernanda! Quero o pacote de ${pkg.label} (${brl(pkg.price)}). Podemos conversar?`;
-
-  return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={pkg.id}
-        initial={reduce ? false : { opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="rounded-media bg-brand p-7 md:p-12"
-      >
-        <p className="text-base text-muted">Investimento</p>
-        <p className="mt-1 font-display text-[clamp(3.6rem,10vw,8rem)] font-semibold leading-none tracking-[-0.05em] tabular">
-          <span ref={priceEl}>{brl(pkg.price)}</span>
-        </p>
-
-        <ul className="mt-10 grid gap-x-10 gap-y-4 sm:grid-cols-2">
-          {pkg.items.map((item, i) => (
-            <motion.li
-              key={item}
-              initial={reduce ? false : { opacity: 0, x: -12 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.15 + i * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center gap-3 text-lg"
-            >
-              <Check size={20} weight="bold" className="shrink-0 text-accent" aria-hidden="true" />
-              {item}
-            </motion.li>
-          ))}
-          <motion.li
-            initial={reduce ? false : { opacity: 0, x: -12 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.15 + pkg.items.length * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-3 text-lg"
+      <div className="mt-14 grid gap-6 md:mt-20 lg:grid-cols-3 lg:items-stretch lg:gap-8">
+        {packages.map((p, i) => (
+          <motion.article
+            key={p.id}
+            initial={reduce ? false : { opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ delay: i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className={`relative flex flex-col rounded-media p-7 md:p-10 ${
+              p.highlight ? "bg-accent text-accent-ink lg:-my-4 lg:py-14" : "bg-brand"
+            }`}
           >
-            <Check size={20} weight="bold" className="shrink-0 text-accent" aria-hidden="true" />
-            Entrega em {pkg.deadline}
-          </motion.li>
-        </ul>
+            {"badge" in p && p.badge && (
+              <span className="absolute right-6 top-6 inline-flex items-center gap-1.5 rounded-full bg-accent-ink px-3 py-1 text-sm font-medium text-accent">
+                <Sparkle size={14} weight="fill" aria-hidden="true" />
+                {p.badge}
+              </span>
+            )}
 
-        <Button asChild size="lg" className="mt-12 w-full sm:w-auto">
-          <a href={whatsappLink(message)} target="_blank" rel="noopener noreferrer">
-            <WhatsappLogo size={22} weight="fill" aria-hidden="true" />
-            {CTA_LABEL}
-          </a>
-        </Button>
-      </motion.div>
-    </AnimatePresence>
+            <p className={`text-base ${p.highlight ? "opacity-70" : "text-muted"}`}>{p.name}</p>
+            <h3 className="mt-1 font-display text-[clamp(2.6rem,5vw,4rem)] font-semibold leading-none tracking-[-0.04em]">{p.reels}</h3>
+            <p className={`mt-4 text-lg ${p.highlight ? "opacity-80" : "text-muted"}`}>{p.tagline}</p>
+
+            <ul className="mt-8 grid gap-3">
+              {p.items.map((item) => (
+                <li key={item} className="flex items-center gap-3 text-lg">
+                  <Check size={20} weight="bold" className={`shrink-0 ${p.highlight ? "" : "text-accent"}`} aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+              <li className="flex items-center gap-3 text-lg">
+                <Check size={20} weight="bold" className={`shrink-0 ${p.highlight ? "" : "text-accent"}`} aria-hidden="true" />
+                Entrega em {p.deadline}
+              </li>
+            </ul>
+
+            <Button
+              asChild
+              size="lg"
+              className={`mt-10 w-full lg:mt-auto ${p.highlight ? "bg-accent-ink text-accent hover:bg-accent-ink/90" : ""}`}
+            >
+              <a href={whatsappLink(quoteMessage(p))} target="_blank" rel="noopener noreferrer">
+                <WhatsappLogo size={22} weight="fill" aria-hidden="true" />
+                Pedir orçamento
+              </a>
+            </Button>
+          </motion.article>
+        ))}
+      </div>
+    </section>
   );
 }

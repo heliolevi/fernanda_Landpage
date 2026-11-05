@@ -66,7 +66,7 @@ export const packages = [
   {
     id: "essencial",
     name: "Essencial",
-    reels: "1 Reels",
+    reels: "2 Reels",
     tagline: "Ideal para testar e sair do zero com um vídeo de alto impacto.",
     highlight: false,
     items: ["Reunião online", "Briefing personalizado", "1 hora de gravação", "Direção de filmagem", "Edição profissional"],
@@ -75,7 +75,7 @@ export const packages = [
   {
     id: "impulso",
     name: "Impulso",
-    reels: "2 Reels",
+    reels: "4 Reels",
     tagline: "O equilíbrio perfeito para manter o perfil ativo e ganhar consistência.",
     highlight: true,
     badge: "Mais escolhido",
@@ -85,7 +85,7 @@ export const packages = [
   {
     id: "presenca",
     name: "Presença",
-    reels: "3 Reels",
+    reels: "8 Reels",
     tagline: "Para quem quer dominar o feed com uma sequência de conteúdos com identidade.",
     highlight: false,
     items: ["Reunião online", "Briefing personalizado", "Até 3 horas de gravação", "Direção de filmagem", "Edição profissional"],

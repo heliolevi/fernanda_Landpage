@@ -64,27 +64,38 @@ export const services = [
 
 export const packages = [
   {
-    id: "1",
-    label: "1 Reels",
-    price: 150,
+    id: "essencial",
+    name: "Essencial",
+    reels: "1 Reels",
+    tagline: "Ideal para testar e sair do zero com um vídeo de alto impacto.",
+    highlight: false,
     items: ["Reunião online", "Briefing personalizado", "1 hora de gravação", "Direção de filmagem", "Edição profissional"],
     deadline: "2 dias úteis",
   },
   {
-    id: "2",
-    label: "2 Reels",
-    price: 300,
+    id: "impulso",
+    name: "Impulso",
+    reels: "2 Reels",
+    tagline: "O equilíbrio perfeito para manter o perfil ativo e ganhar consistência.",
+    highlight: true,
+    badge: "Mais escolhido",
     items: ["Reunião online", "Briefing personalizado", "2 horas de gravação", "Direção de filmagem", "Edição profissional"],
     deadline: "4 dias úteis",
   },
   {
-    id: "3",
-    label: "3 Reels",
-    price: 400,
+    id: "presenca",
+    name: "Presença",
+    reels: "3 Reels",
+    tagline: "Para quem quer dominar o feed com uma sequência de conteúdos com identidade.",
+    highlight: false,
     items: ["Reunião online", "Briefing personalizado", "Até 3 horas de gravação", "Direção de filmagem", "Edição profissional"],
     deadline: "6 dias úteis",
   },
 ] as const;
+
+export function quoteMessage(pkg: (typeof packages)[number]) {
+  return `Olá, Fernanda! Vi o seu portfólio e quero um orçamento do plano ${pkg.name} (${pkg.reels}). Pode me passar os valores e os próximos passos?`;
+}
 
 export const aboutText =
   "Sou Fernanda, editora de vídeo e graduanda em Design, com 2 anos de experiência criando Reels para negócios que querem se destacar. Do briefing à edição final, cuido de cada detalhe para o seu conteúdo ter identidade e resultado.";

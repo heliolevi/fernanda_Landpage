@@ -5,6 +5,7 @@ import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { ClientsMarquee } from "@/components/ClientsMarquee";
 import { Work } from "@/components/Work";
+import { FeaturedCase } from "@/components/FeaturedCase";
 import { Services } from "@/components/Services";
 import { About } from "@/components/About";
 import { Pricing } from "@/components/Pricing";
@@ -23,6 +24,7 @@ export default function App() {
         <Hero ready={ready} />
         <ClientsMarquee />
         <Work />
+        <FeaturedCase />
         <Services />
         <About />
         <Pricing />

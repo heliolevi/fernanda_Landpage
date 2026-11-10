@@ -47,6 +47,31 @@ export const reels = [
   },
 ] as const;
 
+/**
+ * Case em destaque (seção "Botox Day"). Vídeo vertical 1080x1920 com som.
+ * `src` é a versão 1080p; `srcLite` (720p) entra só em conexão lenta ou com economia de dados.
+ * Os capítulos marcam os cortes reais do vídeo (em segundos) e viram a barra de progresso.
+ */
+export const featuredCase = {
+  id: "botox-day",
+  title: "Botox Day",
+  client: "Dra. Sara Alves",
+  summary: "Reel de campanha para a clínica da Dra. Sara Alves: do convite à chamada para agendar, em 52 segundos.",
+  meta: "Reel de campanha, 52 s",
+  src: "/videos/botox-full.mp4",
+  srcLite: "/videos/botox-720.mp4",
+  poster: "/videos/botox-poster.jpg",
+  duration: 52.2,
+  chapters: [
+    { start: 0, title: "Gancho", text: "Fala direto com quem sempre quis fazer o botox." },
+    { start: 5.8, title: "Convite", text: "A data e o evento: Botox Day na clínica." },
+    { start: 10.7, title: "Bastidores", text: "O procedimento de verdade, com a doutora em cena." },
+    { start: 19.7, title: "Oferta", text: "Brindes, sorteios e até 50% de desconto." },
+    { start: 33.9, title: "Chamada", text: "Clique no botão e agende a sua avaliação." },
+    { start: 48.2, title: "Assinatura", text: "A marca da clínica fecha o vídeo." },
+  ],
+} as const;
+
 export const services = [
   {
     id: "edicao",

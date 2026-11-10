@@ -70,7 +70,7 @@ export function Contact() {
           </div>
         </div>
 
-        <div ref={photo} className="md:col-span-4 md:col-start-9 md:self-end">
+        <div ref={photo} className="overflow-hidden rounded-media md:col-span-4 md:col-start-9 md:self-end">
           {hasSpline ? (
             <SplineSlot className="aspect-[3/4] w-full overflow-hidden rounded-media" />
           ) : (

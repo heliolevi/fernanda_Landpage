@@ -24,8 +24,8 @@ npm run preview    # testa o build local
 | Three.js | `HeroScene.tsx` | Hero 3D: quadros 9:16 com os Reels como textura de vídeo, cantos arredondados por shader |
 | GSAP + ScrollTrigger | `FeaturedCase`, `Services`, `About`, `Contact`, scroll do hero | Pilha de painéis, texto revelado palavra a palavra, parallax, cortina do preloader |
 | Lenis | `SmoothScroll.tsx`, `FeaturedCase` | Scroll suave, sincronizado ao ticker do GSAP |
-| Motion (ex Framer Motion) | `FeaturedCase`, `Hero`, `Work`, `Pricing`, `Nav`, `MagneticButton` | Entradas, troca de reel, tilt 3D do palco, botão magnético, transição entre pacotes |
-| Anime.js | `Preloader`, `ClientsMarquee`, `Pricing` | Contador do preloader, marquee de clientes, contagem do preço |
+| Motion (ex Framer Motion) | `FeaturedCase`, `Hero`, `Work`, `Pricing`, `Nav`, `MagneticButton` | Entradas, troca de reel, tilt 3D do palco, botão magnético, quadros dos pacotes (layout + spring) |
+| Anime.js | `Preloader`, `ClientsMarquee` | Contador do preloader, marquee de clientes |
 | shadcn/ui (Radix) | `components/ui` | Button, Dialog (player em tela cheia) e Tabs (pacotes), customizados |
 | Spline | `SplineSlot.tsx` | Slot pronto: veja abaixo |
 
@@ -41,6 +41,14 @@ Observação: "Motion" e "Framer Motion" são o mesmo pacote (`motion/react`).
 - **Qualidade:** `botox-full.mp4` em 1080x1920 (H.264, ~4,8 Mb/s, áudio AAC 192k). `botox-720.mp4` só entra com economia de dados ou rede 2G/3G. O vídeo só começa a baixar quando a seção está a uma tela de distância.
 - **Editar:** textos, cliente e tempos dos capítulos ficam em `featuredCase`, em `src/lib/site.ts`.
 - Com `prefers-reduced-motion`, a seção vira um bloco estático sem scrub e sem autoplay.
+
+## Pacotes (orçamento)
+
+`Pricing.tsx`. O visitante escolhe 2, 4 ou 6 Reels (Essencial, Impulso, Presença) e o palco mostra o pacote em quadros 9:16 com capas de trabalhos reais. Um único botão abre o WhatsApp com o pacote escolhido já escrito na mensagem; o link "Não sabe qual escolher?" abre uma conversa sem plano.
+
+- **Editar:** nomes, quantidade (`count`), gravação, prazo e frases ficam em `packages`, em `src/lib/site.ts`. O que vale para todos os pacotes fica em `packageIncludes`; o plano que já abre selecionado, em `DEFAULT_PACKAGE`.
+- **Teclado:** os planos são um `radiogroup` (setas trocam o plano).
+- Com `prefers-reduced-motion`, os quadros trocam sem animação.
 
 ## Ativar o Spline
 

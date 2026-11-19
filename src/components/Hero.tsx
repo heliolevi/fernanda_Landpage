@@ -107,7 +107,7 @@ function StaticStage() {
   const frames = [
     { src: "/videos/acougue-poster.jpg", cls: "left-[52%] top-[26%] -rotate-6 h-[34%] md:left-[50%] md:top-[22%] md:h-[52%]" },
     { src: "/videos/prato-poster.jpg", cls: "left-[66%] top-[20%] h-[40%] md:left-[64%] md:top-[16%] md:h-[62%]" },
-    { src: "/videos/decoracao-poster.jpg", cls: "left-[82%] top-[28%] rotate-6 h-[34%] md:left-[79%] md:top-[24%] md:h-[52%]" },
+    { src: "/videos/sara-poster.jpg", cls: "left-[82%] top-[28%] rotate-6 h-[34%] md:left-[79%] md:top-[24%] md:h-[52%]" },
   ];
   return (
     <>

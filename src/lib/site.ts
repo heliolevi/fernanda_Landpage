@@ -24,19 +24,19 @@ export const clients = [
  */
 export const reels = [
   {
-    id: "acougue",
-    title: "5 equipamentos para açougue",
+    id: "casafaria",
+    title: "O que você levava?",
     client: "Casa Faria",
-    meta: "Captação e edição, 34 s",
-    loop: "/videos/acougue-loop",
-    full: "/videos/acougue-full",
-    poster: "/videos/acougue-poster.jpg",
+    meta: "Captação e edição, 32\u00a0s",
+    loop: "/videos/casafaria-loop",
+    full: "/videos/casafaria-full",
+    poster: "/videos/casafaria-poster.jpg",
   },
   {
     id: "prato",
     title: "Prato",
     client: "Emporio Saladeria",
-    meta: "Captação e edição, 17 s",
+    meta: "Captação e edição, 17\u00a0s",
     loop: "/videos/prato-loop",
     full: "/videos/prato-full",
     poster: "/videos/prato-poster.jpg",
@@ -45,7 +45,7 @@ export const reels = [
     id: "botox",
     title: "Botox Day",
     client: "Dra. Sara Alves",
-    meta: "Reel de campanha, 52 s",
+    meta: "Reel de campanha, 52\u00a0s",
     loop: "/videos/botox-loop",
     full: "/videos/botox-720",
     poster: "/videos/botox-poster.jpg",
@@ -54,7 +54,7 @@ export const reels = [
     id: "sara",
     title: "Bioestimulador e Botox",
     client: "Dra. Sara Alves",
-    meta: "Bastidores do procedimento, 49 s",
+    meta: "Bastidores do procedimento, 49\u00a0s",
     loop: "/videos/sara-loop",
     full: "/videos/sara-full",
     poster: "/videos/sara-poster.jpg",
@@ -71,7 +71,7 @@ export const featuredCase = {
   title: "Botox Day",
   client: "Dra. Sara Alves",
   summary: "Reel de campanha para a clínica da Dra. Sara Alves: do convite à chamada para agendar, em 52 segundos.",
-  meta: "Reel de campanha, 52 s",
+  meta: "Reel de campanha, 52\u00a0s",
   src: "/videos/botox-full.mp4",
   srcLite: "/videos/botox-720.mp4",
   poster: "/videos/botox-poster.jpg",
@@ -98,49 +98,50 @@ export const services = [
     id: "captacao",
     title: "Captação mobile",
     text: "Gravação com o celular e direção de filmagem. Imagem limpa e natural, sem precisar de estúdio.",
-    media: { type: "video", reel: "acougue" },
+    media: { type: "video", reel: "casafaria" },
   },
 ] as const;
 
-/** O que vem em todos os planos. O que muda de um plano para outro fica em cada pacote. */
-export const packageIncludes = ["Reunião online", "Briefing personalizado", "Direção de filmagem", "Edição profissional"];
-
+/**
+ * Pacotes de Reels. `items` é a lista exata do que vem no pacote (aparece no card ao escolher o plano).
+ * `count` controla quantos quadros o palco mostra; `cadence` diz se é avulso ou por mês.
+ */
 export const packages = [
   {
-    id: "essencial",
-    name: "Essencial",
+    id: "play",
+    name: "Reels Play",
     count: 2,
-    reels: "2 Reels",
+    cadence: "Avulso",
+    summary: "2 Reels avulsos",
     tagline: "Para testar e sair do zero com vídeos de alto impacto.",
-    recording: "1 hora de gravação",
-    deadline: "2 dias úteis",
+    items: ["1 hora de captação", "2 Reels de até 40 s", "Roteiro, edição e trilha"],
   },
   {
-    id: "impulso",
-    name: "Impulso",
+    id: "cut",
+    name: "Reels Cut",
     count: 4,
-    reels: "4 Reels",
+    cadence: "4 vídeos por mês",
+    summary: "4 Reels por mês",
     tagline: "Para manter o perfil ativo e ganhar consistência no mês.",
-    recording: "2 horas de gravação",
-    deadline: "4 dias úteis",
+    items: ["Até 2 horas de captação", "4 Reels de até 40 s", "Roteiro, edição e trilha"],
     badge: "Mais escolhido",
   },
   {
-    id: "presenca",
-    name: "Presença",
+    id: "pro",
+    name: "Reels Pro",
     count: 6,
-    reels: "6 Reels",
+    cadence: "6 vídeos por mês",
+    summary: "6 Reels por mês",
     tagline: "Para ocupar o feed com uma sequência de conteúdos com identidade.",
-    recording: "Até 3 horas de gravação",
-    deadline: "6 dias úteis",
+    items: ["Até 4 horas de captação", "6 Reels de até 40 s", "Direção de filmagem", "Roteiro, edição e trilha"],
   },
 ] as const;
 
 /** Plano que já vem selecionado na seção de pacotes. */
-export const DEFAULT_PACKAGE = "impulso";
+export const DEFAULT_PACKAGE = "cut";
 
 export function quoteMessage(pkg: (typeof packages)[number]) {
-  return `Olá, Fernanda! Vi o seu portfólio e quero um orçamento do plano ${pkg.name} (${pkg.reels}). Pode me passar os valores e os próximos passos?`;
+  return `Olá, Fernanda! Vi o seu portfólio e quero um orçamento do ${pkg.name} (${pkg.summary}). Pode me passar os valores e os próximos passos?`;
 }
 
 export const helpMessage =

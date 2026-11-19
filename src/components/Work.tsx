@@ -176,16 +176,18 @@ function LoopVideo({ reel, playing }: { reel: Reel; playing: boolean }) {
   );
 }
 
+/** MP4 primeiro; o navegador só cai para o WebM se não tocar H.264 (e se o arquivo existir). */
 function FullPlayer({ reel }: { reel: Reel }) {
-  const src = useVideoSrc(reel.full);
   return (
     <video
-      src={src}
       poster={reel.poster}
       controls
       autoPlay
       playsInline
       className="aspect-[9/16] w-full rounded-media bg-black object-cover"
-    />
+    >
+      <source src={`${reel.full}.mp4`} type="video/mp4" />
+      <source src={`${reel.full}.webm`} type="video/webm" />
+    </video>
   );
 }

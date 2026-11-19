@@ -27,7 +27,7 @@ type Item = {
 const ITEMS: Item[] = [
   { video: "/videos/acougue-loop", poster: "/videos/acougue-poster.jpg", pos: [-1.95, -0.3, -0.9], ry: 0.4, rz: -0.07, scale: 1, phase: 0 },
   { video: "/videos/prato-loop", poster: "/videos/prato-poster.jpg", pos: [0, 0.1, 0.6], ry: 0, rz: 0, scale: 1.18, phase: 1.9 },
-  { video: "/videos/decoracao-loop", poster: "/videos/decoracao-poster.jpg", pos: [1.95, -0.4, -0.8], ry: -0.4, rz: 0.06, scale: 1, phase: 3.6 },
+  { video: "/videos/sara-loop", poster: "/videos/sara-poster.jpg", pos: [1.95, -0.4, -0.8], ry: -0.4, rz: 0.06, scale: 1, phase: 3.6 },
 ];
 
 const H = 3;

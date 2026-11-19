@@ -13,7 +13,7 @@ const tones = ["bg-brand", "bg-surface"] as const;
 
 /**
  * Sticky stack (GSAP ScrollTrigger): cada painel gruda no topo e o anterior recua (scale + opacity)
- * enquanto o próximo sobe. Motivo: três serviços lidos em sequência, um de cada vez, sem cards iguais lado a lado.
+ * enquanto o próximo sobe. Motivo: dois serviços lidos em sequência, um de cada vez, sem cards iguais lado a lado.
  */
 export function Services() {
   const root = useRef<HTMLDivElement>(null);
@@ -69,11 +69,11 @@ export function Services() {
 function ServiceMedia({ media }: { media: (typeof services)[number]["media"] }) {
   const cls =
     "aspect-[9/16] h-[40dvh] rounded-media object-cover shadow-[0_30px_70px_-25px_rgb(0_0_0/0.7)] md:h-[62dvh]";
-  return <ReelClip index={media.reel} className={cls} />;
+  return <ReelClip id={media.reel} className={cls} />;
 }
 
-function ReelClip({ index, className }: { index: number; className: string }) {
-  const reel = reels[index];
+function ReelClip({ id, className }: { id: (typeof reels)[number]["id"]; className: string }) {
+  const reel = reels.find((r) => r.id === id) ?? reels[0];
   const src = useVideoSrc(reel.loop);
   const ref = useRef<HTMLVideoElement>(null);
   const reduce = useReducedMotion();

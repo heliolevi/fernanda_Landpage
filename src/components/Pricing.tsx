@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import {
   DEFAULT_PACKAGE,
   helpMessage,
-  packageIncludes,
   packages,
   quoteMessage,
   reels,
@@ -74,13 +73,13 @@ export function Pricing() {
         </motion.p>
       </div>
 
-      <div className="mt-12 grid gap-4 md:mt-20 lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-x-8 lg:gap-y-0">
+      <div className="mt-12 grid grid-cols-1 gap-4 md:mt-20 lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-x-8 lg:gap-y-0">
         {/* escolha do plano */}
         <motion.div
           {...reveal(0.12)}
           role="radiogroup"
           aria-label="Pacotes de Reels"
-          className="flex flex-col gap-2 rounded-media bg-surface p-3 md:p-4 lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:rounded-b-none lg:p-6 lg:pb-3"
+          className="flex min-w-0 flex-col gap-2 rounded-media bg-surface p-3 md:p-4 lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:rounded-b-none lg:p-6 lg:pb-3"
         >
           {packages.map((p, i) => {
             const active = p.id === selected;
@@ -124,14 +123,14 @@ export function Pricing() {
                   <span className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
                     <span className="font-display text-xl font-semibold tracking-tight">{p.name}</span>
                     {"badge" in p && p.badge && (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-accent/15 px-2.5 py-0.5 text-[0.8125rem] font-medium text-accent">
+                      <span className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-accent/15 px-2.5 py-0.5 text-[0.8125rem] font-medium text-accent">
                         <Sparkle size={12} weight="fill" aria-hidden="true" />
                         {p.badge}
                       </span>
                     )}
                   </span>
                   <span className="mt-0.5 block text-sm text-muted">
-                    {p.recording}, entrega em {p.deadline}
+                    {p.cadence}, {p.items[0].charAt(0).toLowerCase() + p.items[0].slice(1)}
                   </span>
                 </span>
                 <span className="tabular relative font-display text-[1.75rem] font-semibold leading-none tracking-tight">
@@ -165,7 +164,10 @@ export function Pricing() {
                   </motion.span>
                 </AnimatePresence>
               </span>
-              <span className="font-display text-[clamp(1.5rem,2.6vw,2.2rem)] font-semibold tracking-tight">Reels</span>
+              <span className="flex flex-col">
+                <span className="font-display text-[clamp(1.5rem,2.6vw,2.2rem)] font-semibold leading-none tracking-tight">Reels</span>
+                <span className="mt-1.5 text-base text-text/75">{pkg.count === 2 ? "avulsos" : "por mês"}</span>
+              </span>
             </div>
             <AnimatePresence mode="wait" initial={false}>
               <motion.p
@@ -216,31 +218,38 @@ export function Pricing() {
         {/* o que vem junto e o pedido */}
         <motion.div
           {...reveal(0.18)}
-          className="flex flex-col rounded-media bg-surface p-6 md:p-8 lg:col-span-5 lg:col-start-8 lg:row-start-2 lg:rounded-t-none lg:px-10 lg:pb-10 lg:pt-5"
+          className="flex min-w-0 flex-col rounded-media bg-surface p-6 md:p-8 lg:col-span-5 lg:col-start-8 lg:row-start-2 lg:rounded-t-none lg:px-10 lg:pb-10 lg:pt-5"
         >
           <div className="lg:border-t lg:border-line lg:pt-6">
-            <h3 className="font-body text-base font-medium tracking-normal text-muted">Em todos os pacotes</h3>
-            <ul className="mt-4 grid gap-x-6 gap-y-3 sm:grid-cols-2">
-              {packageIncludes.map((item) => (
-                <li key={item} className="flex items-center gap-3 text-[1.0625rem]">
-                  <Check size={18} weight="bold" className="shrink-0 text-accent" aria-hidden="true" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <h3 className="font-body text-base font-medium tracking-normal text-muted">O que vem no {pkg.name}</h3>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.ul
+                key={pkg.id}
+                initial={reduce ? false : { opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduce ? undefined : { opacity: 0, y: -6, transition: { duration: 0.12 } }}
+                transition={{ duration: 0.3, ease: EASE }}
+                className="mt-4 grid min-h-[8.5rem] content-start gap-3"
+              >
+                {pkg.items.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-[1.0625rem]">
+                    <Check size={18} weight="bold" className="shrink-0 text-accent" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </motion.ul>
+            </AnimatePresence>
           </div>
 
           <div className="mt-8 lg:mt-auto lg:pt-10">
-            <Button asChild size="lg" className="w-full">
+            <Button asChild size="lg" className="h-auto min-h-14 w-full whitespace-normal px-6 py-3 text-center">
               <a href={whatsappLink(quoteMessage(pkg))} target="_blank" rel="noopener noreferrer">
-                <WhatsappLogo size={22} weight="fill" aria-hidden="true" />
-                <span>
-                  Pedir orçamento: <span className="tabular">{pkg.reels}</span>
-                </span>
+                <WhatsappLogo size={22} weight="fill" aria-hidden="true" className="shrink-0" />
+                <span>Pedir orçamento do {pkg.name}</span>
               </a>
             </Button>
             <p className="mt-3 text-center text-sm text-muted" aria-live="polite">
-              Abre o WhatsApp com o pacote {pkg.name} já escrito na mensagem.
+              Abre o WhatsApp com o {pkg.name} já escrito na mensagem.
             </p>
             <a
               href={whatsappLink(helpMessage)}

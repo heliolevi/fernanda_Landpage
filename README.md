@@ -44,9 +44,9 @@ Observação: "Motion" e "Framer Motion" são o mesmo pacote (`motion/react`).
 
 ## Pacotes (orçamento)
 
-`Pricing.tsx`. O visitante escolhe 2, 4 ou 6 Reels (Essencial, Impulso, Presença) e o palco mostra o pacote em quadros 9:16 com capas de trabalhos reais. Um único botão abre o WhatsApp com o pacote escolhido já escrito na mensagem; o link "Não sabe qual escolher?" abre uma conversa sem plano.
+`Pricing.tsx`. O visitante escolhe entre Reels Play (2 Reels avulsos), Reels Cut (4 por mês) e Reels Pro (6 por mês), e o palco mostra o pacote em quadros 9:16 com capas de trabalhos reais. Ao lado aparece a lista do que vem no plano escolhido. Um único botão abre o WhatsApp com o pacote escolhido já escrito na mensagem; o link "Não sabe qual escolher?" abre uma conversa sem plano.
 
-- **Editar:** nomes, quantidade (`count`), gravação, prazo e frases ficam em `packages`, em `src/lib/site.ts`. O que vale para todos os pacotes fica em `packageIncludes`; o plano que já abre selecionado, em `DEFAULT_PACKAGE`.
+- **Editar:** nome, quantidade (`count`), frequência (`cadence`), frase e a lista do que vem (`items`) ficam em `packages`, em `src/lib/site.ts`; o plano que já abre selecionado fica em `DEFAULT_PACKAGE`.
 - **Teclado:** os planos são um `radiogroup` (setas trocam o plano).
 - Com `prefers-reduced-motion`, os quadros trocam sem animação.
 
